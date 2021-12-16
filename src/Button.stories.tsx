@@ -1,8 +1,8 @@
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { Button } from './Button';
-import { ApplePayButton } from "./ApplePayButton";
+import { BasketIcon, IconColor } from "./icons";
 
 export default {
   title: 'Components / Button',
@@ -14,44 +14,25 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 export const Primary = Template.bind({});
 Primary.args = {
   variant: "primary",
-  children: 'Title',
-  disabled: false
+  text: "Primary button with icon"
 };
-Primary.parameters = {
-  zeplinLink: [{
-    name: "default",
-    link: "https://app.zeplin.io/styleguide/5cd486b18a64c1414be004fb/components?coid=60011c4a56703a633cbc654c"
-  }, {
-    name: "pressed",
-    link: "https://app.zeplin.io/styleguide/5cd486b18a64c1414be004fb/components?coid=60011c49ad918108c5fc0a4e"
-  }, {
-    name: "disabled",
-    link: "https://app.zeplin.io/styleguide/5cd486b18a64c1414be004fb/components?coid=60011c4a671662023330f736"
-  }]
-}
 
 export const Secondary = Template.bind({});
 Secondary.args = {
   variant: "secondary",
-  children: 'Title',
-  disabled: false
+  text: "Primary button with icon"
 };
 
-export const Tertiary = Template.bind({});
-Tertiary.args = {
-  variant: "tertiary",
-  children: 'Title',
-  disabled: false
+export const PrimaryWithIcon = Template.bind({});
+PrimaryWithIcon.args = {
+  icon: <BasketIcon color={IconColor.WHITE} />,
+  variant: "primary",
+  text: "Primary button with icon"
 };
 
-export const Warning = Template.bind({});
-Warning.args = {
-  variant: "warning",
-  children: 'Title',
-  disabled: false
-};
-
-export const ApplePay = () => <ApplePayButton />;
-ApplePay.parameters = {
-  component: ApplePayButton
+export const SecondaryWithIcon = Template.bind({});
+SecondaryWithIcon.args = {
+  icon: <BasketIcon />,
+  variant: "secondary",
+  text: "Primary button with icon"
 };

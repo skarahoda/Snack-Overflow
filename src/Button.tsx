@@ -1,109 +1,73 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { styled } from "./styled";
 
-interface ButtonProps {
-  variant?: "primary" | "secondary" | "tertiary" | "warning";
+interface ButtonWrapperProps {
+  variant?: "primary" | "secondary";
 }
 
-export const Button = styled.button<ButtonProps>`
-  padding: ${({
-    variant
-  }) => {
-    switch (variant) {
-      case "tertiary":
-        return "8px 54px";
-      case "warning":
-      case "secondary":
-      case "primary":
-      default:
-        return "10px 56px";
-    }
-  }};
+const ButtonWrapper = styled.button<ButtonWrapperProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 56px;
+  padding: 0 56.5px;
   background-color: ${({
     theme,
     variant
   }) => {
     switch (variant) {
-      case "warning":
-        return "#fe3f4d";
-      case "tertiary":
-        return "transparent";
       case "secondary":
-        return "rgba(193, 190, 193, 0.75)";
+        return theme.colors.karlPressed;
       case "primary":
       default:
-        return theme.colors.pink;
+        return theme.colors.peach;
     }
   }};
-  border-radius: 6px;
-  border: ${({
-   theme,
-   variant
-  }) => {
-    switch (variant) {
-      case "tertiary":
-        return `solid 2px ${theme.colors.pink}`;
-      case "warning":
-      case "secondary":
-      case "primary":
-      default:
-        return "none";
-    }
-  }};
-  font-family: "Open Sans", monospace;
+  border-radius: 8px;
+  border: none;
+  font-family: Poppins, monospace;
   font-size: 17px;
   font-weight: 600;
-  text-align: center;
+  line-height: 22px;
   color: ${({
-    theme,
-    variant
-  }) => {
+              theme,
+              variant
+            }) => {
     switch (variant) {
-      case "tertiary":
-        return theme.colors.pink;
       case "secondary":
-        return theme.colors.teflon;
-      case "warning":
+        return theme.colors.peach;
       case "primary":
       default:
         return theme.colors.white;
     }
   }};
   
-  &:focus {
-    padding: 6px 52px;
-    border: ${({
-     theme,
-     variant
-    }) => {
-      switch (variant) {
-        case "tertiary":
-          return `solid 4px ${theme.colors.pink}`;
-        case "warning":
-        case "secondary":
-        case "primary":
-        default:
-          return "solid 4px rgba(85, 77, 86, 0.25)";
-      }
-    }};
-  }
-
-  &:disabled {
-    opacity: 0.5;
+  &:active {
     background-color: ${({
-      variant
-    }) => {
+                           variant
+                         }) => {
       switch (variant) {
-        case "warning":
-          return "#dd424f"
-        case "tertiary":
-          return "transparent";
         case "secondary":
-          return "rgba(193, 190, 193, 0.75)";
+          return "#d4d1d4";
         case "primary":
         default:
-          return "#dd748d";
+          return "#c05f32";
       }
     }};
   }
 `
+
+interface ButtonProps extends ButtonWrapperProps {
+    text: string;
+    icon?: React.ReactNode;
+}
+
+export const Button: FunctionComponent<ButtonProps> = ({ text, icon, variant }) => {
+  return (
+    <ButtonWrapper variant={variant}>
+        {icon}
+        <div>{text}</div>
+    </ButtonWrapper>
+  );
+};

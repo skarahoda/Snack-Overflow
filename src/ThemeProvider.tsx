@@ -3,7 +3,7 @@ import { ThemeProvider as BaseThemeProvider }from "styled-components";
 
 import { theme } from "./theme";
 
-import "@fontsource/open-sans/latin.css";
+import "@fontsource/poppins";
 
 
 export const ThemeProvider: FunctionComponent = ({ children }) => (

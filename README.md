@@ -1,2 +1,2 @@
-# travel-design-system
-Design System for Travel App
+# Snack Overflow
+Design System for Snack Overflow

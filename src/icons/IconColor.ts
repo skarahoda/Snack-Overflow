@@ -1,6 +1,5 @@
 export enum IconColor {
-  PINK = "pink",
-  WHEAT = "wheat",
-  GANDALF = "gandalf",
+  PEACH = "peach",
   TEFLON = "teflon",
+  WHITE = "white",
 }
